@@ -1,0 +1,15 @@
+local servers = {
+  clangd = {
+    cmd = { "clangd", "--compile-commands-dir=." }, -- Adjust path if compile_commands.json isn't in the project root
+  },
+}
+
+require('mason-lspconfig').setup {
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
+      require('lspconfig')[server_name].setup(server)
+    end,
+  },
+}
+
