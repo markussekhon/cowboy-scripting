@@ -1,0 +1,38 @@
+
+-- Main LSP Configuration
+{
+  'neovim/nvim-lspconfig',
+  dependencies = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  },
+  config = function()
+    -- LSP setup logic here
+  end,
+},
+
+
+-- LSP setup logic
+{
+  'neovim/nvim-lspconfig',
+  dependencies = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  },
+  config = function()
+    local servers = {
+      clangd = {
+        cmd = { "clangd", "--compile-commands-dir=" .. vim.fn.getcwd() },
+      },
+    }
+
+    require('mason-lspconfig').setup {
+      handlers = {
+        function(server_name)
+          local server = servers[server_name] or {}
+          require('lspconfig')[server_name].setup(server)
+        end,
+      },
+    }
+  end,
+},
