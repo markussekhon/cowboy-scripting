@@ -1,4 +1,5 @@
-# linux-setup
+# cowboy scriptin 
 
-hopefully this script helps setup my vm at work
+Collection of cowboy activities...
 
+#####YEEHAW!
